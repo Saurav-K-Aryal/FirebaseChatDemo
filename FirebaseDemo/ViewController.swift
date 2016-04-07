@@ -8,10 +8,25 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+import Firebase
 
+class ViewController: UIViewController {
+    
+    @IBOutlet weak var AppLabel: UILabel!
+    
+    
+    
+    @IBOutlet weak var goChatBtn: UIButton!
+
+
+
+    @IBAction func goChatBtnClickd(sender: AnyObject) {
+        self.performSegueWithIdentifier("goChat", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+       // myRootRef.setValue("Do you have data? You'll love Firebase.")
         // Do any additional setup after loading the view, typically from a nib.
     }
 
