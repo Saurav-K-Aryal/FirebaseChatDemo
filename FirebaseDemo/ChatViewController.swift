@@ -12,11 +12,11 @@ import UIKit
 
 import Firebase
 
-var chatArray = [NSString]()
+var chatArray = [String]()
 
 class ChatViewController: UIViewController,UITextViewDelegate {
     
-    
+    //var dummyObject?
     @IBOutlet weak var textDisplay: UITextView!
     
     @IBOutlet weak var sendMsgBtn: UIButton!
@@ -34,11 +34,18 @@ class ChatViewController: UIViewController,UITextViewDelegate {
         super.viewDidLoad()
         myRootRef.observeEventType(.Value, withBlock: {
             snapshot in
+            
+            print(snapshot.value);
+            let stringMirror = snapshot.value as! String;
+            print(stringMirror);
 //           let stringMirror = Mirror(reflecting: snapshot.value)
+            
 //           print(stringMirror)
-//            chatArray.append(snapshot.value) as NSString!
+           chatArray.append(stringMirror)
+            print(chatArray);
         
         })
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
