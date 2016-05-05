@@ -21,7 +21,7 @@ class ViewController: UIViewController {
 
 
     @IBAction func goChatBtnClickd(sender: AnyObject) {
-        self.performSegueWithIdentifier("goChat", sender: self)
+        //self.performSegueWithIdentifier("goChat", sender: self)
     }
     
     override func viewDidLoad() {

@@ -6,32 +6,32 @@
 //  Copyright © 2016 Saurav Aryal. All rights reserved.
 //
 
-import Foundation
+
 
 import UIKit
-
 import Firebase
 
-var chatArray = [String]()
 
-class ChatViewController: UIViewController,UITextViewDelegate {
+
+class ChatViewController: UIViewController{
     
     //var dummyObject?
-    @IBOutlet weak var textDisplay: UITextView!
+
+
+    var chatArray = [String]()
     
-    @IBOutlet weak var sendMsgBtn: UIButton!
-    
-    @IBOutlet weak var userText: UITextField!
     
     // Create a reference to a Firebase location
     var myRootRef = Firebase(url:"https://3369keshari.firebaseio.com")
     
-    @IBAction func sendMsgBtnClicked(sender: AnyObject) {
-        myRootRef.setValue(userText.text!)
-        
-    }
+   
+   
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         myRootRef.observeEventType(.Value, withBlock: {
             snapshot in
             
@@ -41,8 +41,8 @@ class ChatViewController: UIViewController,UITextViewDelegate {
 //           let stringMirror = Mirror(reflecting: snapshot.value)
             
 //           print(stringMirror)
-           chatArray.append(stringMirror)
-            print(chatArray);
+           self.chatArray.append(stringMirror)
+            print(self.chatArray);
         
         })
         
@@ -53,6 +53,23 @@ class ChatViewController: UIViewController,UITextViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func numberOfRowsInSection(section: Int) -> Int {
+        return chatArray.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("LabelCell", forIndexPath: indexPath) 
+        
+        cell.textLabel?.text = "asdfasf"
+        
+        return cell
     }
 
 
